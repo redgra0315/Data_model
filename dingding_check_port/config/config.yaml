@@ -1,0 +1,6 @@
+address: "192.168.28.205"
+service: "pay-web"
+port: 8073
+token: "ea4f54b8fb8184ecf615860e14050a0642fb485394615a1b44e36e83e20b9d7f"
+secret: "SEC314af5ea56e4903295cbed7a9eb9aa06ce34ef4db25e3146b9dca91632f47a46"
+path: "/actuator/health1"
