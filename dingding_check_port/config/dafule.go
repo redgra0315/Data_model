@@ -25,7 +25,7 @@ var Conf = new(Config)
 //  检测配置文件的路径
 func CheckPath() (err error, config interface{}) {
 
-	viper.SetConfigFile("dingding_check_port/config/config.yaml") //
+	viper.SetConfigFile("config/config.yaml") //
 	err = viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))

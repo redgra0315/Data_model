@@ -1,4 +1,4 @@
-address: "192.168.28.205"
+address: "192.168.28.204"
 service: "pay-web"
 port: 8073
 token: "ea4f54b8fb8184ecf615860e14050a0642fb485394615a1b44e36e83e20b9d7f"

@@ -21,7 +21,6 @@ var (
 	status  string
 	message string
 	port1   string
-	CodeId  int = 200
 )
 
 // 实现发送告警的message
@@ -34,18 +33,14 @@ func Demo1() (mess string) {
 		Timeout: time.Second * 3,
 	}
 
-	resp, _ := client.Get(urls)
-	if resp == nil {
-		fmt.Println("服务报错")
-		CodeId = 404
-	}
-	if CodeId != 200 {
-		address = "Address:" + " " + "-" + " " + config.Conf.Address + "\t\n"
-		service = "Service:" + " " + "-" + " " + config.Conf.Service + "\t\n"
-		status = "Status:" + " " + "-" + " " + strconv.Itoa(CodeId) + "\t\n"
-		message = "Message:" + " " + "-" + " " + "它离开你了 " + "\t\n"
-		port1 = "Port:" + " " + "-" + " " + strconv.Itoa(config.Conf.Port) + "\t\n"
-		fmt.Println(strconv.Itoa(CodeId))
+	resp, err := client.Get(urls)
+	if err != nil || resp.StatusCode != 200 {
+		address = "Address:" + " " + "-" + " " + config.Conf.Address + "\n"
+		service = "Service:" + " " + "-" + " " + config.Conf.Service + "\n"
+		status = "Status:" + " " + "-" + " " + strconv.Itoa(resp.StatusCode) + "\n"
+		message = "Message:" + " " + "-" + " " + "它离开你了 " + "\n"
+		port1 = "Port:" + " " + "-" + " " + strconv.Itoa(config.Conf.Port) + "\n"
+		//return string(address + "\n" + service + "\n" + port1 + "\n" + message + "\n" + status)
 		return string(address + "\n" + service + "\n" + port1 + "\n" + message + "\n" + status)
 	} else {
 		fmt.Println("服务正常了")
