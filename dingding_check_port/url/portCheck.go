@@ -32,12 +32,16 @@ func Demo1() (mess string) {
 	client := &http.Client{
 		Timeout: time.Second * 3,
 	}
+	statusCode := 404
 
-	resp, err := client.Get(urls)
-	if err != nil || resp.StatusCode != 200 {
+	resp, _ := client.Get(urls)
+
+	fmt.Println("hahahaha", resp)
+	if resp == nil || resp.StatusCode != 200 {
+
 		address = "Address:" + " " + "-" + " " + config.Conf.Address + "\n"
 		service = "Service:" + " " + "-" + " " + config.Conf.Service + "\n"
-		status = "Status:" + " " + "-" + " " + strconv.Itoa(resp.StatusCode) + "\n"
+		status = "Status:" + " " + "-" + " " + strconv.Itoa(statusCode) + "\n"
 		message = "Message:" + " " + "-" + " " + "它离开你了 " + "\n"
 		port1 = "Port:" + " " + "-" + " " + strconv.Itoa(config.Conf.Port) + "\n"
 		//return string(address + "\n" + service + "\n" + port1 + "\n" + message + "\n" + status)

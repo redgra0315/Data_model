@@ -71,3 +71,13 @@ func Delete(id int) (err1 error) {
 	fmt.Printf("删除成功，影响行数为:%d", n)
 	return
 }
+func InsertUserDome() (err error) {
+	sqlStr := "INSERT INTO user (name,age) VALUES (:name,:age)"
+	_, err = DB.NamedExec(sqlStr,
+		map[string]interface{}{
+			"name": "qimi",
+			"age":  23,
+		})
+	fmt.Println("插入成功！")
+	return
+}

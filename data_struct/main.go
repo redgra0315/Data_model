@@ -16,4 +16,9 @@ func main() {
 	id := 6
 	Init.QueryRowDemo(id)
 	//Init.Delete(id)
+	err = Init.InsertUserDome()
+	if err != nil {
+		fmt.Errorf("插入错误：%v", err)
+	}
+
 }
