@@ -10,6 +10,7 @@ import (
 	_ "github.com/Depado/bfchroma"
 	_ "github.com/alecthomas/chroma/formatters/html"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 )
@@ -35,11 +36,11 @@ func Demo1() (mess string) {
 	statusCode := 404
 
 	resp, _ := client.Get(urls)
-
-	fmt.Println("hahahaha", resp)
+	hostname, _ := os.Hostname()
+	//fmt.Println("hahahaha", resp)
 	if resp == nil || resp.StatusCode != 200 {
 
-		address = "Address:" + " " + "-" + " " + config.Conf.Address + "\n"
+		address = "Address:" + " " + "-" + " " + hostname + "\n"
 		service = "Service:" + " " + "-" + " " + config.Conf.Service + "\n"
 		status = "Status:" + " " + "-" + " " + strconv.Itoa(statusCode) + "\n"
 		message = "Message:" + " " + "-" + " " + "它离开你了 " + "\n"
@@ -47,7 +48,7 @@ func Demo1() (mess string) {
 		//return string(address + "\n" + service + "\n" + port1 + "\n" + message + "\n" + status)
 		return string(address + "\n" + service + "\n" + port1 + "\n" + message + "\n" + status)
 	} else {
-		fmt.Println("服务正常了")
+		fmt.Println("服务恢复正常")
 	}
 	return
 }
